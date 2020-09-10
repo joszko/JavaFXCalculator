@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.mariuszgromada.math.mxparser.Expression;
 
 public class Controller {
     @FXML
@@ -95,31 +96,38 @@ public class Controller {
     public void buttonEqualsPressed(){
 
         equation = display.getText();
-        String[] equationArray = equation.split("");
-        double result = 0;
-        StringBuilder number = new StringBuilder();
 
-        for (String s : equationArray) {
-
-            if (isNumeric(s) || s.equals(".")) {
-                number.append(s);
-            } else {
-                result = Double.parseDouble(number.toString());
-                number = new StringBuilder();
-            }
-        }
-
-        if (buttonAddPressed){
-            result = result + Double.parseDouble(number.toString());
-        } else if (buttonMinusPressed){
-            result = result - Double.parseDouble(number.toString());
-        } else if (buttonMultiplyPressed){
-            result = result * Double.parseDouble(number.toString());
-        } else if (buttonDividePressed){
-            result = result / Double.parseDouble(number.toString());
-        }
-
+        // calculating result using mXparser
+        Expression e = new Expression(equation);
+        double result = e.calculate();
         display.setText(Double.toString(result));
+
+
+//        String[] equationArray = equation.split("");
+//        double result = 0;
+//        StringBuilder number = new StringBuilder();
+//
+//        for (String s : equationArray) {
+//
+//            if (isNumeric(s) || s.equals(".")) {
+//                number.append(s);
+//            } else {
+//                result = Double.parseDouble(number.toString());
+//                number = new StringBuilder();
+//            }
+//        }
+//
+//        if (buttonAddPressed){
+//            result = result + Double.parseDouble(number.toString());
+//        } else if (buttonMinusPressed){
+//            result = result - Double.parseDouble(number.toString());
+//        } else if (buttonMultiplyPressed){
+//            result = result * Double.parseDouble(number.toString());
+//        } else if (buttonDividePressed){
+//            result = result / Double.parseDouble(number.toString());
+//        }
+//
+//        display.setText(Double.toString(result));
 
     }
 
