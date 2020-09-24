@@ -11,8 +11,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/calculator.fxml"));
+        setUserAgentStylesheet(STYLESHEET_CASPIAN);
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 150, 175));
+        primaryStage.setScene(new Scene(root, 200, 220));
         primaryStage.show();
     }
 
