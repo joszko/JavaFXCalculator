@@ -6,10 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
 import org.mariuszgromada.math.mxparser.Expression;
 
+import java.util.Arrays;
+
+import static java.lang.Math.sqrt;
+
 public class Controller {
+
     @FXML
     private TextField display;
     @FXML
@@ -45,14 +49,21 @@ public class Controller {
     @FXML
     private Button buttonDot;
     @FXML
-    private GridPane gridPane;
+    private Button buttonPercent;
+    @FXML
+    private Button buttonCE;
+    @FXML
+    private Button buttonBackspace;
+    @FXML
+    private Button button1DivByX;
+    @FXML
+    private Button buttonPower;
+    @FXML
+    private Button buttonSquareRoot;
+    @FXML
+    private Button buttonNegative;
 
     String equation;
-    boolean buttonAddPressed = false;
-    boolean buttonMinusPressed = false;
-    boolean buttonDividePressed = false;
-    boolean buttonMultiplyPressed = false;
-
 
     @FXML
     public void buttonPressed(ActionEvent event) {
@@ -84,17 +95,32 @@ public class Controller {
             display.appendText(".");
         }else if (button.equals(buttonAdd)){
             display.appendText("+");
-            buttonAddPressed = true;
         }else if (button.equals(buttonMinus)){
             display.appendText("-");
-            buttonMinusPressed = true;
         }else if (button.equals(buttonMultiply)){
             display.appendText("*");
-            buttonMultiplyPressed =true;
         }else if (button.equals(buttonDivide)) {
             display.appendText("/");
-            buttonDividePressed = true;
+        } else if (button.equals(buttonPercent)){
+            display.appendText("%");
+        } else if (button.equals(button1DivByX)){
+            display.setText(String.valueOf(1/calculate(display.getText())));
+        } else if (button.equals(buttonBackspace)){
+            display.setText(removeLastCharacter(display.getText()));
+        } else if (button.equals(buttonCE)){
+            display.setText(removeLastCharacter(display.getText()));
+        } else if (button.equals(buttonSquareRoot)){
+            display.setText(String.valueOf(sqrt(calculate(display.getText()))));
+        } else if (button.equals(buttonPower)) {
+            display.setText(String.valueOf(calculate(display.getText()) * calculate(display.getText())));
+        } else if (button.equals(buttonNegative)){
+            display.setText(String.valueOf(calculate(display.getText()) * -1));
         }
+    }
+
+    public double calculate(String equation){
+        Expression e = new Expression(equation);
+        return e.calculate();
     }
 
     @FXML
@@ -107,35 +133,6 @@ public class Controller {
         Expression e = new Expression(equation);
         double result = e.calculate();
         display.setText(Double.toString(result));
-
-        // calculating using my own "parser"
-
-//        String[] equationArray = equation.split("");
-//        double result = 0;
-//        StringBuilder number = new StringBuilder();
-//
-//        for (String s : equationArray) {
-//
-//            if (isNumeric(s) || s.equals(".")) {
-//                number.append(s);
-//            } else {
-//                result = Double.parseDouble(number.toString());
-//                number = new StringBuilder();
-//            }
-//        }
-//
-//        if (buttonAddPressed){
-//            result = result + Double.parseDouble(number.toString());
-//        } else if (buttonMinusPressed){
-//            result = result - Double.parseDouble(number.toString());
-//        } else if (buttonMultiplyPressed){
-//            result = result * Double.parseDouble(number.toString());
-//        } else if (buttonDividePressed){
-//            result = result / Double.parseDouble(number.toString());
-//        }
-//
-//        display.setText(Double.toString(result));
-
     }
 
     public static boolean isNumeric(String string){
@@ -150,23 +147,31 @@ public class Controller {
     @FXML
     public void clearDisplay(){
         display.setText("");
-
-        buttonAddPressed = false;
-        buttonMinusPressed = false;
-        buttonDividePressed = false;
-        buttonMultiplyPressed = false;
     }
+
     @FXML
     public void handleKeyPressed(KeyEvent keyEvent){
+
+        String[] mathCharacters = {"ADD", "SUBTRACT", "MULTIPLY", "DIVIDE", "DECIMAL"};
+
         System.out.println(keyEvent.getCode());
         if (keyEvent.getCode().equals(KeyCode.DELETE)) {
             clearDisplay();
-        } else if (keyEvent.getCode().equals(KeyCode.DIGIT0) || keyEvent.getCode().equals(KeyCode.NUMPAD0)){
-            display.appendText("0");
+        } else if (isNumeric(keyEvent.getText())){
+            display.appendText(keyEvent.getText());
+        } else if (Arrays.asList(mathCharacters).contains(String.valueOf(keyEvent.getCode()))){
+            display.appendText(keyEvent.getText());
+        } else if (keyEvent.getCode().equals(KeyCode.ENTER)){
+            buttonEqualsPressed();
+        } else if (keyEvent.getCode().equals(KeyCode.BACK_SPACE)){
+            display.setText(removeLastCharacter(display.getText()));
         }
-
     }
 
-
-
+    public String removeLastCharacter(String str){
+        if (str != null && str.length() > 0) {
+            str = str.substring(0, str.length() - 1);
+        }
+        return str;
+    }
 }

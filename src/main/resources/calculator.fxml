@@ -14,35 +14,35 @@
     </top>
 
     <center>
-        <GridPane fx:id="gridPane" alignment="CENTER" hgap="10" vgap="10" stylesheets="@style.css" onKeyPressed="#handleKeyPressed">
+        <GridPane alignment="CENTER" hgap="5" vgap="5" stylesheets="@style.css" onKeyPressed="#handleKeyPressed">
             <Button fx:id="buttonPercent" onAction="#buttonPressed" text="\%" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <Button fx:id="buttonCE" onAction="#buttonPressed" text="CE" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Button fx:id="buttonClear" alignment="CENTER" onAction="#buttonPressed"  text="C" GridPane.columnIndex="2" GridPane.rowIndex="0" />
             <Button fx:id="buttonBackspace" onAction="#buttonPressed" text="&lt;-" GridPane.columnIndex="3" GridPane.rowIndex="0" />
 
             <Button fx:id="button1DivByX" onAction="#buttonPressed" text="1/x" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Button fx:id="buttonSquare" onAction="#buttonPressed" text="X2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="buttonRoot" alignment="CENTER" onAction="#buttonPressed"  text="Sqr" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="buttonPower" onAction="#buttonPressed" text="X2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="buttonSquareRoot" alignment="CENTER" onAction="#buttonPressed"  text="Sqr" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="buttonDivide" onAction="#buttonPressed" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
 
             <Button fx:id="button7" onAction="#buttonPressed" text="7" GridPane.columnIndex="0" GridPane.rowIndex="2" />
             <Button fx:id="button8" onAction="#buttonPressed" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="button9" onAction="#buttonPressed" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="buttonMultiply" onAction="#buttonPressed" text="/" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button fx:id="buttonMultiply" onAction="#buttonPressed" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
             <Button fx:id="button4" onAction="#buttonPressed" text="4" GridPane.columnIndex="0" GridPane.rowIndex="3" />
             <Button fx:id="button5" onAction="#buttonPressed" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button fx:id="button6" onAction="#buttonPressed" text="6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="buttonMinus" onAction="#buttonPressed" text="*" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button fx:id="buttonMinus" onAction="#buttonPressed" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
 
             <Button fx:id="button1" onAction="#buttonPressed" text="1" GridPane.columnIndex="0" GridPane.rowIndex="4" />
             <Button fx:id="button2" onAction="#buttonPressed" text="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button fx:id="button3" onAction="#buttonPressed" text="3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="buttonAdd" onAction="#buttonPressed" text="-" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button fx:id="buttonAdd" onAction="#buttonPressed" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" />
 
             <Button fx:id="buttonNegative" onAction="#buttonPressed" text="+/-" GridPane.columnIndex="0" GridPane.rowIndex="5" />
             <Button fx:id="button0" onAction="#buttonPressed" text="0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button fx:id="buttonDot" onAction="#buttonPressed" text="+" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button fx:id="buttonDot" onAction="#buttonPressed" text="." GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Button onAction="#buttonEqualsPressed" text="=" GridPane.columnIndex="3" GridPane.rowIndex="5" />
 
         </GridPane>
