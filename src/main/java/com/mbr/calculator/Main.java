@@ -15,8 +15,9 @@ public class Main extends Application {
         setUserAgentStylesheet(STYLESHEET_CASPIAN);
         primaryStage.setTitle("Calculator");
         primaryStage.getIcons().add(new Image("/calculator-icon.png"));
-        primaryStage.setScene(new Scene(root, 200, 220));
+        primaryStage.setScene(new Scene(root, 200, 300));
         primaryStage.show();
+        root.requestFocus();
     }
 
 

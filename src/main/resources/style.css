@@ -1,4 +1,31 @@
-.button {
-    -fx-pref-width: 200px;
-    -fx-alignment: CENTER;
+.button-raised-numbers{
+    -fx-padding: 0.7em 0.57em;
+    -fx-font-size: 14px;
+    -jfx-button-type: RAISED;
+    -fx-background-color: rgb(6, 6, 6);
+    -fx-pref-width: 200;
+    -fx-text-fill: WHITE;
+}
+.button-raised-equals{
+    -fx-padding: 0.7em 0.57em;
+    -fx-font-size: 14px;
+    -jfx-button-type: RAISED;
+    -fx-background-color: rgb(19, 67, 105);
+    -fx-pref-width: 200;
+    -fx-text-fill: WHITE;
+}
+.button-raised{
+    -fx-padding: 0.7em 0.57em;
+    -fx-font-size: 14px;
+    -jfx-button-type: RAISED;
+    -fx-background-color: rgb(19, 19, 19);
+    -fx-pref-width: 200;
+    -fx-text-fill: WHITE;
+}
+.text-field{
+    -fx-background-color: rgb(31, 31, 31);
+    -fx-text-fill: white;
+}
+.background{
+    -fx-background-color: rgb(31, 31, 31);
 }

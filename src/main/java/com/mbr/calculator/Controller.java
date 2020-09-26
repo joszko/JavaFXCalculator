@@ -1,5 +1,6 @@
 package com.mbr.calculator;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,51 +18,51 @@ public class Controller {
     @FXML
     private TextField display;
     @FXML
-    private Button button1;
+    private JFXButton button1;
     @FXML
-    private Button button2;
+    private JFXButton button2;
     @FXML
-    private Button button3;
+    private JFXButton button3;
     @FXML
-    private Button button4;
+    private JFXButton button4;
     @FXML
-    private Button button5;
+    private JFXButton button5;
     @FXML
-    private Button button6;
+    private JFXButton button6;
     @FXML
-    private Button button7;
+    private JFXButton button7;
     @FXML
-    private Button button8;
+    private JFXButton button8;
     @FXML
-    private Button button9;
+    private JFXButton button9;
     @FXML
-    private Button button0;
+    private JFXButton button0;
     @FXML
-    private Button buttonClear;
+    private JFXButton buttonClear;
     @FXML
-    private Button buttonAdd;
+    private JFXButton buttonAdd;
     @FXML
-    private Button buttonMinus;
+    private JFXButton buttonMinus;
     @FXML
-    private Button buttonMultiply;
+    private JFXButton buttonMultiply;
     @FXML
-    private Button buttonDivide;
+    private JFXButton buttonDivide;
     @FXML
-    private Button buttonDot;
+    private JFXButton buttonDot;
     @FXML
-    private Button buttonPercent;
+    private JFXButton buttonPercent;
     @FXML
-    private Button buttonCE;
+    private JFXButton buttonCE;
     @FXML
-    private Button buttonBackspace;
+    private JFXButton buttonBackspace;
     @FXML
-    private Button button1DivByX;
+    private JFXButton button1DivByX;
     @FXML
-    private Button buttonPower;
+    private JFXButton buttonPower;
     @FXML
-    private Button buttonSquareRoot;
+    private JFXButton buttonSquareRoot;
     @FXML
-    private Button buttonNegative;
+    private JFXButton buttonNegative;
 
     String equation;
 
@@ -110,7 +111,14 @@ public class Controller {
         } else if (button.equals(buttonCE)){
             display.setText(removeLastCharacter(display.getText()));
         } else if (button.equals(buttonSquareRoot)){
-            display.setText(String.valueOf(sqrt(calculate(display.getText()))));
+
+            String calculatedSquareRoot = String.valueOf(sqrt(calculate(display.getText())));
+            if (calculatedSquareRoot.length() > 16){
+                display.setText(calculatedSquareRoot.substring(0,16));
+            } else {
+                display.setText(calculatedSquareRoot);
+            }
+
         } else if (button.equals(buttonPower)) {
             display.setText(String.valueOf(calculate(display.getText()) * calculate(display.getText())));
         } else if (button.equals(buttonNegative)){
@@ -129,7 +137,6 @@ public class Controller {
         equation = display.getText();
 
         // calculating result using mXparser
-
         Expression e = new Expression(equation);
         double result = e.calculate();
         display.setText(Double.toString(result));
@@ -154,7 +161,6 @@ public class Controller {
 
         String[] mathCharacters = {"ADD", "SUBTRACT", "MULTIPLY", "DIVIDE", "DECIMAL"};
 
-        System.out.println(keyEvent.getCode());
         if (keyEvent.getCode().equals(KeyCode.DELETE)) {
             clearDisplay();
         } else if (isNumeric(keyEvent.getText())){
