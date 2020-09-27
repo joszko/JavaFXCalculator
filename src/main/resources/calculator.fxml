@@ -6,6 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import com.jfoenix.controls.JFXButton?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mbr.calculator.Controller" stylesheets="@style.css" >
+
     <top>
         <TextField fx:id="display" disable="true" onAction="#clearDisplay"  alignment="TOP_RIGHT" styleClass="text-field">
             <font>

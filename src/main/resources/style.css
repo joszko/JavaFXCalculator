@@ -25,7 +25,10 @@
 .text-field{
     -fx-background-color: rgb(31, 31, 31);
     -fx-text-fill: white;
+    -fx-border-color: rgb(31, 31, 31);
+    -fx-opacity: 1.0;
 }
 .background{
     -fx-background-color: rgb(31, 31, 31);
+    -fx-border-color: rgb(31, 31, 31);
 }

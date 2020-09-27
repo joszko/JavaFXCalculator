@@ -1,6 +1,7 @@
 package com.mbr.calculator;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -133,7 +134,7 @@ public class Controller {
 
     @FXML
     public void buttonEqualsPressed(){
-
+        
         equation = display.getText();
 
         // calculating result using mXparser
@@ -179,5 +180,10 @@ public class Controller {
             str = str.substring(0, str.length() - 1);
         }
         return str;
+    }
+
+    @FXML
+    public void closeApp(){
+        Platform.exit();
     }
 }
